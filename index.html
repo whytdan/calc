@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="calc">
+        <input type="text" id="calc_input">
+        <div class="calc__buttons_container">
+            <button onclick="handleButtonClick('(')" class="calc__button_first_row">(</button>
+            <button onclick="handleButtonClick(')')" class="calc__button_first_row">)</button>
+            <button onclick="handleButtonClick('%')" class="calc__button_first_row">%</button>
+            <button onclick="handleButtonClick('AC')" class="calc__button_first_row">AC</button>
+            <button onclick="handleButtonClick(7)">7</button>
+            <button onclick="handleButtonClick(8)">8</button>
+            <button onclick="handleButtonClick(9)">9</button>
+            <button onclick="handleButtonClick('/')" class="calc__button_operation">/</button>
+            <button onclick="handleButtonClick(4)">4</button>
+            <button onclick="handleButtonClick(5)">5</button>
+            <button onclick="handleButtonClick(6)">6</button>
+            <button onclick="handleButtonClick('*')" class="calc__button_operation">*</button>
+            <button onclick="handleButtonClick(1)">1</button>
+            <button onclick="handleButtonClick(2)">2</button>
+            <button onclick="handleButtonClick(3)">3</button>
+            <button onclick="handleButtonClick('-')" class="calc__button_operation">-</button>
+            <button onclick="handleButtonClick(0)">0</button>
+            <button onclick="handleButtonClick('.')">.</button>
+            <button id="equal_button" onclick="handleCalculate()">=</button>
+            <button onclick="handleButtonClick('+')" class="calc__button_operation">+</button>
+        </div>
+    </div>
+    <script>
+        const calcIpunt = document.getElementById('calc_input');
+        calcIpunt.value = 0;
+        function handleCalculate(){
+            const value = calcIpunt.value;
+            try {
+                const result = eval(value);
+                calcIpunt.value = result;
+            } catch (error) {
+                calcIpunt.value = 'InvalidOperation';
+            }
+        }
+        function handleButtonClick(symbol) {
+            if(symbol === 'AC'){
+                calcIpunt.value = 0;
+            }
+            else {
+                if(calcIpunt.value == 0){
+                    calcIpunt.value = symbol;
+                } else{
+                    calcIpunt.value = calcIpunt.value + symbol;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
